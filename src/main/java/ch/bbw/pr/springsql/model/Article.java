@@ -1,17 +1,24 @@
 package ch.bbw.pr.springsql.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Article {
     @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "content")
     private String content;
+    @JoinColumn(name = "author_id")
     private String author;
+
     private String topic;
+    @Column(name = "date")
     private String date;
+    @Column(name = "readtime")
     private int readtime;
 
     public Article() {
