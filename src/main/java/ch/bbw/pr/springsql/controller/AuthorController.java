@@ -24,6 +24,11 @@ public class AuthorController {
         return "updateauthor";
 
     }
+    //delete author
+    @GetMapping(path="/deleteauthor")
+    public String deleteauthor() {
+        return "deleteauthor";
+    }
 
 
 
