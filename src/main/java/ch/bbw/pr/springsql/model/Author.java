@@ -1,16 +1,26 @@
 package ch.bbw.pr.springsql.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Author {
     @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "email")
     private String email;
+    @Column(name = "password")
     private String password;
+    @Column(name = "bio")
     private String bio;
+
+    @OneToMany(mappedBy = "author")
+    private List<Article> article;
 
     public Author() {
     }
@@ -62,4 +72,12 @@ public class Author {
     public void setBio(String bio) {
         this.bio = bio;
     }
+
+    public void setArticle(List<Article> article) {
+        this.article = article;
+    }
+    public List<Article> getArticle() {
+        return article;
+    }
+
 }

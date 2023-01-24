@@ -1,6 +1,6 @@
 package ch.bbw.pr.springsql.controller;
 
-import ch.bbw.pr.springsql.model.SavedArticles;
+
 import ch.bbw.pr.springsql.model.Topic;
 import ch.bbw.pr.springsql.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +32,6 @@ public class TopicController {
     public void deleteTopic(@PathVariable("id")int id) {
         topicRepo.deleteById(id);
     }
-    
+
 
 }
