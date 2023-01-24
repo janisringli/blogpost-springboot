@@ -15,7 +15,7 @@ public class Author {
     public Author() {
     }
 
-    public Author(int id, String name, String email, String password, String role) {
+    public Author(int id, String name, String email, String password, String bio) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -55,11 +55,11 @@ public class Author {
         this.password = password;
     }
 
-    public String getRole() {
+    public String getBio() {
         return bio;
     }
 
-    public void setRole(String role) {
-        this.bio = role;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }
