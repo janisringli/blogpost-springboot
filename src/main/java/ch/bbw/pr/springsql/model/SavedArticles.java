@@ -1,11 +1,12 @@
 package ch.bbw.pr.springsql.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class SavedArticles {
     @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int articleId;
     private int authorId;
