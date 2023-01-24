@@ -1,33 +1,37 @@
 package ch.bbw.pr.springsql.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import ch.bbw.pr.springsql.model.Author;
+import ch.bbw.pr.springsql.repository.AuthorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthorController {
-    @GetMapping(path="/getallauthors")
-    public String getallauthors() {
-        return "getallauthors";
+    @Autowired
+    private AuthorRepository authorRepo;
+    @GetMapping(path="/authors")
+    public Iterable<Author> getAuthors() {
+        return authorRepo.findAll();
     }
-    @GetMapping(path="/getauthorbyid")
-    public String getauthorbyid() {
-        return "getauthorbyid";
+    @GetMapping(path="/author/{id}")
+    public Author authorById(@PathVariable("id")int id) {
+        return authorRepo.findById(id).get();
     }
-    //add author
-    @GetMapping(path="/addauthor")
-    public String addauthor() {
-        return "addauthor";
+    @PostMapping(path="/authors")
+    public Author addAuthor(@RequestBody Author author) {
+        return authorRepo.save(author);
     }
-    //update author
-    @GetMapping(path="/updateauthor")
-    public String updateauthor() {
-        return "updateauthor";
+    @PutMapping(path="/author/{id}")
+public Author updateAuthor(@PathVariable("id")int id, @RequestBody Author author) {
+        Author authorToUpdate = authorRepo.findById(id).get();
+        authorToUpdate.setFirstName(author.getFirstName());
+        authorToUpdate.setLastName(author.getLastName());
+        return authorRepo.save(authorToUpdate);
+    }
 
-    }
-    //delete author
-    @GetMapping(path="/deleteauthor")
-    public String deleteauthor() {
-        return "deleteauthor";
+    @DeleteMapping(path="/author/{id}")
+    public void deleteAuthor(@PathVariable("id")int id) {
+        authorRepo.deleteById(id);
     }
 
 
