@@ -22,10 +22,12 @@ public class AuthorController {
         return authorRepo.save(author);
     }
     @PutMapping(path="/author/{id}")
-public Author updateAuthor(@PathVariable("id")int id, @RequestBody Author author) {
+    public Author updateAuthor(@PathVariable("id")int id, @RequestBody Author author) {
         Author authorToUpdate = authorRepo.findById(id).get();
-        authorToUpdate.setFirstName(author.getFirstName());
-        authorToUpdate.setLastName(author.getLastName());
+        authorToUpdate.setBio(author.getBio());
+        authorToUpdate.setName(author.getName());
+        authorToUpdate.setEmail(author.getEmail());
+        authorToUpdate.setPassword(author.getPassword());
         return authorRepo.save(authorToUpdate);
     }
 
