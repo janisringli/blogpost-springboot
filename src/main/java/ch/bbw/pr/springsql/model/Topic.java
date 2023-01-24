@@ -1,12 +1,14 @@
 package ch.bbw.pr.springsql.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Topic {
     @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "topicName")
     private String topicName;
 
     public Topic() {
