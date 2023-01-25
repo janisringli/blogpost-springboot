@@ -3,6 +3,8 @@ package ch.bbw.pr.springsql.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "savedArticles")
+@NamedQuery(name = "SavedArticles.findAll", query = "FROM SavedArticles")
 public class SavedArticles {
     @Id
     @Column(name = "id", unique = true)
@@ -44,4 +46,12 @@ public class SavedArticles {
         this.authorId = authorId;
     }
 
+    @Override
+    public String toString() {
+        return "SavedArticles{" +
+                "id=" + id +
+                ", articleId=" + articleId +
+                ", authorId=" + authorId +
+                '}';
+    }
 }
