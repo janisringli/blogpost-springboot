@@ -14,6 +14,7 @@ public class SavedArticles {
     private int authorId;
 
     public SavedArticles() {
+
     }
 
     public SavedArticles(int id, int articleId, int authorId) {

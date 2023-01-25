@@ -13,9 +13,6 @@ public class Topic {
     @Column(name = "topicName")
     private String topicName;
 
-    public Topic() {
-    }
-
     public Topic(int id, String topicName) {
         this.id = id;
         this.topicName = topicName;

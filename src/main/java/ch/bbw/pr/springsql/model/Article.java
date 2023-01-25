@@ -23,8 +23,6 @@ public class Article {
     @Column(name = "readtime")
     private int readtime;
 
-    public Article() {
-    }
 
     public Article(int id, String title, String content, String author, String topic, String date, int readtime) {
         this.id = id;
