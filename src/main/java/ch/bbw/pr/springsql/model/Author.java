@@ -24,8 +24,11 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<Article> article;
 
+
     public Author() {
+
     }
+
 
     public Author(int id, String name, String email, String password, String bio) {
         this.id = id;
@@ -81,6 +84,7 @@ public class Author {
     public List<Article> getArticle() {
         return article;
     }
+
 
     @Override
     public String toString() {
