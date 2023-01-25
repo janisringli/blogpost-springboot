@@ -3,6 +3,8 @@ package ch.bbw.pr.springsql.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "article")
+@NamedQuery(name = "Article.findAll", query = "FROM Article")
 public class Article {
     @Id
     @Column(name = "id", unique = true)
@@ -89,4 +91,16 @@ public class Article {
         this.readtime = readtime;
     }
 
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
+                ", topic='" + topic + '\'' +
+                ", date='" + date + '\'' +
+                ", readtime=" + readtime +
+                '}';
+    }
 }

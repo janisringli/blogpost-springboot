@@ -82,4 +82,15 @@ public class Author {
         return article;
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", bio='" + bio + '\'' +
+                ", article=" + article +
+                '}';
+    }
 }
