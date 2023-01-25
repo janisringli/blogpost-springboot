@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 public class SavedArticlesController {
     @Autowired
     private SavedArticlesRepository savedArticlesRepo;
-    @GetMapping(path="/savedarticles")
-    public Iterable<SavedArticles> getSavedArticles() {
-        return savedArticlesRepo.findAll();
+    @GetMapping(path="/savedarticles/author/{id}")
+    public Iterable<SavedArticles> savedArticlesByAuthorId(@PathVariable("id")int id) {
+        return savedArticlesRepo.findByAuthorId(id);
     }
     @GetMapping(path="/savedarticle/{id}")
     public SavedArticles savedArticlesById(@PathVariable("id")int id) {
