@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "author")
+@NamedQuery(name = "Author.findAll", query = "FROM Author")
 public class Author {
     @Id
     @Column(name = "id", unique = true)
