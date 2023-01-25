@@ -3,6 +3,8 @@ package ch.bbw.pr.springsql.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "topic")
+@NamedQuery(name = "Topic.findAll", query = "FROM Topic")
 public class Topic {
     @Id
     @Column(name = "id", unique = true)
@@ -33,5 +35,13 @@ public class Topic {
 
     public void setName(String topicName) {
         this.topicName = topicName;
+    }
+
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "id=" + id +
+                ", topicName='" + topicName + '\'' +
+                '}';
     }
 }
