@@ -1,6 +1,9 @@
 package ch.bbw.pr.springsql.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "article")
@@ -14,27 +17,28 @@ public class Article {
     private String title;
     @Column(name = "content")
     private String content;
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
     private String author;
+    @ManyToMany(mappedBy = "article")
+    @JsonIgnore
+    List<Topic> topic;
 
-    private String topic;
     @Column(name = "date")
     private String date;
     @Column(name = "readtime")
     private int readtime;
 
 
-    public Article(int id, String title, String content, String author, String topic, String date, int readtime) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.author = author;
-        this.topic = topic;
-        this.date = date;
-        this.readtime = readtime;
-
+    public Article() {
     }
 
+
+    public void setTopic(List<Topic> topic) {
+        this.topic = topic;
+    }
+    public List<Topic> getTopic(){
+        return topic;
+    }
     public int getId() {
         return id;
     }
@@ -65,14 +69,6 @@ public class Article {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getTopic() {
-        return topic;
-    }
-
-    public void setTopic(String topic) {
-        this.topic = topic;
     }
 
     public String getDate() {

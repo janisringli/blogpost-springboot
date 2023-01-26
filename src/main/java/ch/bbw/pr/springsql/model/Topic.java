@@ -2,6 +2,8 @@ package ch.bbw.pr.springsql.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "topic")
 @NamedQuery(name = "Topic.findAll", query = "FROM Topic")
@@ -13,10 +15,13 @@ public class Topic {
     @Column(name = "topicName")
     private String topicName;
 
-    public Topic(int id, String topicName) {
-        this.id = id;
-        this.topicName = topicName;
+    @ManyToMany
+    @JoinTable(name = "article_topic", joinColumns = @JoinColumn(name = "topic_id"), inverseJoinColumns = @JoinColumn(name = "article_id"))
+    List<Article> article;
+
+    public Topic() {
     }
+
 
     public int getId() {
         return id;
@@ -34,6 +39,12 @@ public class Topic {
         this.topicName = topicName;
     }
 
+    public List<Article> getArticle() {
+        return article;
+    }
+    public void setArticle(List<Article> article) {
+        this.article = article;
+    }
     @Override
     public String toString() {
         return "Topic{" +

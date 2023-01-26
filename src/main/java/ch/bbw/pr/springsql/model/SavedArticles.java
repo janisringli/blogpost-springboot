@@ -17,12 +17,6 @@ public class SavedArticles {
 
     }
 
-    public SavedArticles(int id, int articleId, int authorId) {
-        this.id = id;
-        this.articleId = articleId;
-        this.authorId = authorId;
-    }
-
     public int getId() {
         return id;
     }
