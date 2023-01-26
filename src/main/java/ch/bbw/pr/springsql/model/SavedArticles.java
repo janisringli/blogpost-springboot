@@ -1,6 +1,8 @@
 package ch.bbw.pr.springsql.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "savedArticles")
@@ -11,10 +13,11 @@ public class SavedArticles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int articleId;
-    private int authorId;
 
+    @OneToOne(mappedBy = "savedArticles", cascade = {CascadeType.ALL})
+    @JsonIgnore
+    Author author;
     public SavedArticles() {
-
     }
 
     public int getId() {
@@ -33,12 +36,12 @@ public class SavedArticles {
         this.articleId = articleId;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @Override
@@ -46,7 +49,7 @@ public class SavedArticles {
         return "SavedArticles{" +
                 "id=" + id +
                 ", articleId=" + articleId +
-                ", authorId=" + authorId +
+                ", author=" + author +
                 '}';
     }
 }

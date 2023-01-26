@@ -26,6 +26,7 @@ public class TopicController {
     public Topic updateTopic(@PathVariable("id")int id, @RequestBody Topic topic) {
         Topic topicToUpdate = topicRepo.findById(id).get();
         topicToUpdate.setName(topic.getName());
+        topicToUpdate.setArticle(topic.getArticle());
         return topicRepo.save(topicToUpdate);
     }
     @DeleteMapping(path="/topic/{id}")

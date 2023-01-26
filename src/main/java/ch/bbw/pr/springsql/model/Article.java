@@ -17,10 +17,9 @@ public class Article {
     private String title;
     @Column(name = "content")
     private String content;
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
-    private String author;
+    @ManyToOne
+    private Author author;
     @ManyToMany(mappedBy = "article")
-    @JsonIgnore
     List<Topic> topic;
 
     @Column(name = "date")
@@ -63,11 +62,11 @@ public class Article {
         this.content = content;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 

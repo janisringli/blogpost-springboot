@@ -1,7 +1,6 @@
 package ch.bbw.pr.springsql.controller;
 
 import ch.bbw.pr.springsql.model.Article;
-import ch.bbw.pr.springsql.model.Author;
 import ch.bbw.pr.springsql.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

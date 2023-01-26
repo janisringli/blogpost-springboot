@@ -1,6 +1,7 @@
 package ch.bbw.pr.springsql.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<Article> article;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    SavedArticles savedArticles;
 
     public Author() {
 
@@ -76,6 +79,13 @@ public class Author {
         return article;
     }
 
+    public SavedArticles getSavedArticles() {
+        return savedArticles;
+    }
+
+    public void setSavedArticles(SavedArticles savedArticles) {
+        this.savedArticles = savedArticles;
+    }
 
     @Override
     public String toString() {

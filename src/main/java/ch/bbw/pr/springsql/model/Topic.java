@@ -16,7 +16,10 @@ public class Topic {
     private String topicName;
 
     @ManyToMany
-    @JoinTable(name = "article_topic", joinColumns = @JoinColumn(name = "topic_id"), inverseJoinColumns = @JoinColumn(name = "article_id"))
+    @JoinTable(name = "article_topic",
+            joinColumns = @JoinColumn(name = "topic_id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id")
+    )
     List<Article> article;
 
     public Topic() {

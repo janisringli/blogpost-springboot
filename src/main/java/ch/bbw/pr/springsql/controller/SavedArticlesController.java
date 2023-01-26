@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.*;
 public class SavedArticlesController {
     @Autowired
     private SavedArticlesRepository savedArticlesRepo;
-    @GetMapping(path="/savedarticles/author/{id}")
-    public Iterable<SavedArticles> savedArticlesByAuthorId(@PathVariable("id")int id) {
-        return savedArticlesRepo.findByAuthorId(id);
+    @GetMapping(path="/savedarticles")
+    public Iterable<SavedArticles> getSavedArticles() {
+        return savedArticlesRepo.findAll();
     }
+
     @GetMapping(path="/savedarticle/{id}")
     public SavedArticles savedArticlesById(@PathVariable("id")int id) {
         return savedArticlesRepo.findById(id).get();
     }
-    @PostMapping(path="/savedarticles")
+    @PostMapping(path="/savedarticle")
     public SavedArticles addSavedArticles(@RequestBody SavedArticles savedArticles) {
         return savedArticlesRepo.save(savedArticles);
     }
+
     @PutMapping(path="/savedarticle/{id}")
-    public SavedArticles updateSavedArticles(@PathVariable("id")int id, @RequestBody SavedArticles savedArticles) {
+    public SavedArticles updateSavedArticle(@PathVariable("id")int id, @RequestBody SavedArticles savedArticles) {
         SavedArticles savedArticlesToUpdate = savedArticlesRepo.findById(id).get();
-        savedArticlesToUpdate.setArticleId(savedArticles.getArticleId());
-        savedArticlesToUpdate.setAuthorId(savedArticles.getAuthorId());
         return savedArticlesRepo.save(savedArticlesToUpdate);
     }
-    @DeleteMapping(path="/savedarticle/{id}")
-    public void deleteSavedArticles(@PathVariable("id")int id) {
+    @DeleteMapping(path="/savedarticle/author/{id}")
+    public void deleteSavedArticle(@PathVariable("id")int id) {
         savedArticlesRepo.deleteById(id);
     }
 

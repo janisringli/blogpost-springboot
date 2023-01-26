@@ -28,6 +28,8 @@ public class AuthorController {
         authorToUpdate.setName(author.getName());
         authorToUpdate.setEmail(author.getEmail());
         authorToUpdate.setPassword(author.getPassword());
+        authorToUpdate.setSavedArticles(author.getSavedArticles());
+        authorToUpdate.setArticle(author.getArticle());
         return authorRepo.save(authorToUpdate);
     }
 
